@@ -1,0 +1,102 @@
+.card {
+  display: flex;
+  gap: 24px;
+  overflow: hidden;
+  margin-top: 32px;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  border-radius: 20px;
+  padding: 24px;
+  width: 888px;
+  height: 358px;
+  background: #fff;
+}
+
+.image {
+  border-radius: 10px;
+  width: 290px;
+  height: 310px;
+  object-fit: cover;
+}
+.favoriteToggleIcon {
+  fill: none;
+  stroke: currentColor;
+}
+.titleWrapper {
+  display: flex;
+  gap: 248px;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 125%;
+  color: #101828;
+}
+.priceWrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 125%;
+  color: #101828;
+}
+
+.rating {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  color: #777;
+}
+
+.location {
+  margin-left: auto;
+}
+
+.description {
+  margin: 10px 0;
+  color: #555;
+  font-size: 0.9em;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.feature {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.85em;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.showMoreButton {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.showMoreButton:hover {
+  background-color: #d81b60;
+}
