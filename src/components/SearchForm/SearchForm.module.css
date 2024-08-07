@@ -1,0 +1,198 @@
+.formWrapper {
+  width: 360px;
+}
+.location {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.locationText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(16, 24, 40, 0.6);
+}
+.locationInput {
+  border-radius: 10px;
+  padding: 18px 218px 18px 44px;
+  width: 360px;
+  height: 56px;
+  background: #f7f7f7;
+  outline: none;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #101828;
+}
+.locationInput::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #101828;
+}
+.locationIcon {
+  fill: none;
+  stroke: currentColor;
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-30%);
+  cursor: pointer;
+}
+.inputWrapper {
+  position: relative;
+  padding-top: 8px;
+}
+.filterText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(16, 24, 40, 0.6);
+  padding-top: 32px;
+}
+.filterHeader {
+  padding-top: 32px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: #101828;
+}
+
+.checkboxContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 24px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  border: 1px solid rgba(16, 24, 40, 0.1);
+  border-radius: 10px;
+  padding: 17px 40px;
+  width: 112px;
+  height: 95px;
+}
+
+.checkboxLabel:hover {
+  border-color: #bbb;
+}
+
+.checkboxInput {
+  display: none;
+}
+
+.checkboxLabel:has(.checkboxInput:checked) {
+  border: 1px solid #e44848;
+}
+
+.checkboxContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkboxIcon {
+  fill: none;
+  stroke: currentColor;
+  margin-bottom: 5px;
+}
+
+.checkboxText {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+    color: #101828;
+}
+.filterLine {
+  margin-top: 24px;
+  font-size: 250%;
+  border-bottom: 1px solid rgba(16, 24, 40, 0.1);
+  padding-bottom: 0px;
+  width: 360px;
+  text-align: center;
+}
+
+.radioContainer {
+  display: flex;
+  width: 360px;
+  gap: 10px;
+  padding-top: 24px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  border: 1px solid rgba(16, 24, 40, 0.1);
+  padding: 17px 30px;
+  flex-basis: calc((100% - 20px) / 3);
+  height: 95px;
+}
+
+.radioLabel:hover {
+  border-color: #bbb;
+}
+
+.radioInput {
+  display: none;
+}
+
+.radioLabel:has(.radioInput:checked) {
+  border: 1px solid #e44848;
+}
+
+.radioContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.radioIcon {
+  fill: none;
+  stroke: currentColor;
+  margin-bottom: 5px;
+}
+
+.radioText {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+    color: #101828;
+}
+.button {
+    display: flex;
+    margin-top: 64px;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 200px;
+    padding: 16px 60px;
+    width: 173px;
+    height: 56px;
+    background: #e44848;
+    cursor: pointer;
+    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    border: none;
+  }
+  .button:hover,
+  .button:focus {
+    background: #D84343;
+  }

@@ -15,6 +15,8 @@
   background: #e44848;
   margin: 55px auto;
   cursor: pointer;
+  outline: none;
+    border: none;
   transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button:hover,

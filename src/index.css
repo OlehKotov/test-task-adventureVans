@@ -25,4 +25,8 @@ img {
   display: block;
   max-width: 100%;
 }
+input, textarea {
+  outline: none;
+  border: none;
+  }
 
