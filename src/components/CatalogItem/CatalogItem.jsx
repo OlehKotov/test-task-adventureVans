@@ -1,5 +1,6 @@
 import css from "./CatalogItem.module.css";
 import sprite from "../../assets/icons/sprite.svg";
+import { useState } from "react";
 
 // {
 //   "_id": "1",
@@ -56,12 +57,18 @@ const MAX_LENGTH = 68;
 
 const truncateDescription = (text, maxLength) => {
   if (text.length > maxLength) {
-    return text.slice(0, maxLength) + '...';
+    return text.slice(0, maxLength) + "...";
   }
   return text;
 };
 
+const addDoubleZero = (text) => {
+  const result = text.toString().slice(0) + ".00";
+  return result;
+};
+
 const CatalogItem = ({ campervan }) => {
+  const [showHeard, setShowHeard] = useState(false);
 
   const {
     name,
@@ -84,166 +91,124 @@ const CatalogItem = ({ campervan }) => {
     reviews,
   } = campervan;
 
+  const toggleHeardPressed = () => {
+    setShowHeard(!showHeard);
+  };
+
+  const reviewCount = reviews.length;
+  const averageRating =
+    reviews.reduce((sum, review) => sum + review.reviewer_rating, 0) /
+    reviewCount;
+
   return (
-<div>
+    <div>
       <div className={css.card}>
-        <img
-          className={css.image}
-          src={gallery[0]}
-          alt="Mavericks"
-        />
+        <img className={css.image} src={gallery[0]} alt="Mavericks" />
+
         <div className={css.content}>
-
-
           <div className={css.titleWrapper}>
             <h2 className={css.title}>{name}</h2>
 
             <div className={css.priceWrapper}>
-              <span className={css.price}>${price}</span>
-              <span>
+              <span className={css.price}>${addDoubleZero(price)}</span>
+              <button className={css.heardBtn} onClick={toggleHeardPressed}>
                 <svg
                   className={css.favoriteToggleIcon}
-                  width="25px"
-                  height="22px"
+                  width="24px"
+                  height="24px"
                 >
-                  <use xlinkHref={`${sprite}#icon-Vector`} />
+                  <use
+                    xlinkHref={`${sprite}#${
+                      showHeard ? "icon-Property-1pressed" : "icon-Vector"
+                    }`}
+                  />
                 </svg>
-              </span>
+              </button>
             </div>
           </div>
 
           <div className={css.rating}>
-            <span><svg
-                  className={css.favoriteToggleIcon}
-                  width="16px"
-                  height="16px"
-                >
-                  <use xlinkHref={`${sprite}#icon-Rating`} />
-                </svg> 4.4 (2 Reviews)</span>
+            <svg className={css.ratingIcon} width="16px" height="16px">
+              <use xlinkHref={`${sprite}#icon-Rating`} />
+            </svg>
+
+            <span className={css.reviews}>{`${averageRating.toFixed(
+              1
+            )} (${reviewCount} Reviews)`}</span>
+
+            <svg className={css.locationIcon} width="18px" height="20px">
+              <use xlinkHref={`${sprite}#icon-map-pin`} />
+            </svg>
             <span className={css.location}>{location}</span>
           </div>
 
           <p className={css.description}>
-          {truncateDescription(description, MAX_LENGTH)}
+            {truncateDescription(description, MAX_LENGTH)}
           </p>
+
+          
+
           <div className={css.features}>
-            <div className={css.feature}>{adults}</div>
-            <div className={css.feature}>{transmission}</div>
-            <div className={css.feature}>{engine}</div>
-            <div className={css.feature}>{details.kitchen}</div>
-            <div className={css.feature}>{details.beds}</div>
-            <div className={css.feature}>{details.airConditioner}</div>
+
+          {adults > 0 && (
+              <div className={css.feature}>
+                <svg  width="20px" height="20px">
+                  <use xlinkHref={`${sprite}#icon-Users`} />
+                </svg>
+                <span>{adults} adults</span>
+              </div>
+            )}
+
+
+            <div className={css.feature}>
+              <svg className={css.featureIcon} width="20px" height="20px">
+                <use xlinkHref={`${sprite}#icon-Step`} />
+              </svg>
+              {transmission.charAt(0).toUpperCase() + transmission.slice(1)}
+            </div>
+
+            <div className={css.feature}>
+              <svg width="20px" height="20px">
+                <use xlinkHref={`${sprite}#gaz`} />
+              </svg>
+              {engine.charAt(0).toUpperCase() + engine.slice(1)}
+            </div>
+
+            {details.kitchen > 0 && (
+              <div className={css.feature}>
+                <svg className={css.featureIcon} width="20px" height="20px">
+                  <use xlinkHref={`${sprite}#kitchen`} />
+                </svg>
+                <span>Kitchen</span>
+              </div>
+            )}
+
+            {details.beds > 0 && (
+              <div className={css.feature}>
+                <svg className={css.featureIcon} width="20px" height="20px">
+                  <use xlinkHref={`${sprite}#bed`} />
+                </svg>
+                <span>{details.beds} beds</span>
+              </div>
+            )}
+
+            {details.airConditioner > 0 && (
+              <div className={css.feature}>
+                <svg  width="20px" height="20px">
+                  <use xlinkHref={`${sprite}#icon-Vertical-container`} />
+                </svg>
+                <span> AC</span>
+              </div>
+            )}
+
           </div>
           <div>
-            <button className={css.showMoreButton}>Show more</button>
+            <button className={css.button}>Show more</button>
           </div>
         </div>
       </div>
     </div>
- );
+  );
 };
-
-
-
-
-
-    // <div className="catalog-item">
-    //   <h2>{name}</h2>
-    //   <p>Price: ${price}</p>
-    //   <p>Rating: {rating}</p>
-    //   <p>Location: {location}</p>
-    //   <p>Adults: {adults}</p>
-    //   <p>Children: {children}</p>
-    //   <p>Engine: {engine}</p>
-    //   <p>Transmission: {transmission}</p>
-    //   <p>Form: {form}</p>
-    //   <p>Length: {length}</p>
-    //   <p>Width: {width}</p>
-    //   <p>Height: {height}</p>
-    //   <p>Tank: {tank}</p>
-    //   <p>Consumption: {consumption}</p>
-    //   <p>Description: {description}</p>
-    //   <div className="details">
-    //     <h3>Details:</h3>
-    //     {details && Object.entries(details).map(([key, value]) => (
-    //       <p key={key}>{`${key}: ${value}`}</p>
-    //     ))}
-    //   </div>
-    //   <div className="gallery">
-    //     <h3>Gallery:</h3>
-        // {gallery && gallery.map((url, index) => (
-        //   <img key={index} src={url} alt={`${name} image ${index + 1}`} />
-        // ))}
-    //   </div>
-    //   <div className="reviews">
-    //     <h3>Reviews:</h3>
-    //     {reviews && reviews.map((review, index) => (
-    //       <div key={index} className="review">
-    //         <p>Reviewer: {review.reviewer_name}</p>
-    //         <p>Rating: {review.reviewer_rating}</p>
-    //         <p>Comment: {review.comment}</p>
-    //       </div>
-    //     ))}
-    //   </div>
-    // </div>
-  // );
-// };
-    // <div>
-    //   <div className={css.card}>
-    //     <img
-    //       className={css.image}
-    //       src="https://ftp.goit.study/img/campers-test-task/1-1.webp"
-    //       alt="Mavericks"
-    //     />
-    //     <div className={css.content}>
-
-
-    //       <div className={css.titleWrapper}>
-    //         <h2 className={css.title}>{name}</h2>
-
-    //         <div className={css.priceWrapper}>
-    //           <span className={css.price}>${price}</span>
-    //           <span>
-    //             <svg
-    //               className={css.favoriteToggleIcon}
-    //               width="25px"
-    //               height="22px"
-    //             >
-    //               <use xlinkHref={`${sprite}#icon-Vector`} />
-    //             </svg>
-    //           </span>
-    //         </div>
-    //       </div>
-
-    //       <div className={css.rating}>
-    //         <span><svg
-    //               className={css.favoriteToggleIcon}
-    //               width="16px"
-    //               height="16px"
-    //             >
-    //               <use xlinkHref={`${sprite}#icon-Rating`} />
-    //             </svg> 4.4 (2 Reviews)</span>
-    //         <span className={css.location}>{location}</span>
-    //       </div>
-
-    //       <p className={css.description}>
-    //       {description}
-    //       </p>
-    //       <div className={css.features}>
-    //         <div className={css.feature}>{adults}</div>
-    //         <div className={css.feature}>{transmission}</div>
-    //         <div className={css.feature}>{engine}</div>
-    //         <div className={css.feature}>{kitchen}</div>
-    //         <div className={css.feature}>{beds}</div>
-    //         <div className={css.feature}>{airConditioner}</div>
-    //       </div>
-    //       <div>
-    //         <button className={css.showMoreButton}>Show more</button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-  // );
-// };
 
 export default CatalogItem;
