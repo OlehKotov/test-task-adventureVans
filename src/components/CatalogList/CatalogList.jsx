@@ -14,12 +14,8 @@ const CatalogList = () => {
       } catch (error) {
         console.log(error);
       } }
-    
-
       fetchData();
   }, []);
-
- 
 
   return (
     <div className="campervanList">
