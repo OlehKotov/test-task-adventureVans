@@ -1,9 +1,18 @@
-import React from 'react'
+import SearchForm from "../../components/SearchForm/SearchForm";
+import FavoriteList from "../../components/FavoriteList/FavoriteList";
+import css from "./Favorites.module.css";
+import Header from "../../components/Header/Header";
 
 const Favorites = () => {
   return (
-    <div>Favorites</div>
-  )
-}
+    <div>
+      <Header />
+      <div className={css.catalog}>
+        <SearchForm />
+        <FavoriteList />
+      </div>
+    </div>
+  );
+};
 
-export default Favorites
+export default Favorites;

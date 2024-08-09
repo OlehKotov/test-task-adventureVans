@@ -24,35 +24,33 @@ const ModalVans = ({ isOpen, onClose, campervan }) => {
   } = campervan;
 
   const reviewCount = reviews.length;
-  const averageRating =
-    reviews.reduce((sum, review) => sum + review.reviewer_rating, 0) /
-    reviewCount;
 
   return (
     <Modal
-      onRequestClose={() => onClose()}
+      onRequestClose={onClose}
       closeTimeoutMS={300}
       isOpen={isOpen}
-      overlayClassName={"modalOverlay"}
-      className={css.modalOverlay}
+      overlayClassName={css.modalOverlay}
+      className={css.modal}
       ariaHideApp={false}
+      shouldCloseOnOverlayClick={true}
     >
-      <div className={css.modal}>
-        <h1 className={css.title}>{name}</h1>
-        <button className={css.closeBtn} onClick={() => onClose()}>
-          <svg className={css.closeIcon} width="32px" height="32px">
-            <use xlinkHref={`${sprite}#close`} />
-          </svg>
-        </button>
+      <div className={css.modalContainer}>
+        <div className={css.headerContainer}>
+          <h1 className={css.title}>{name}</h1>
+          <button className={css.closeBtn} onClick={() => onClose()}>
+            <svg className={css.closeIcon} width="32px" height="32px">
+              <use xlinkHref={`${sprite}#close`} />
+            </svg>
+          </button>
+        </div>
 
         <div className={css.rating}>
           <svg className={css.ratingIcon} width="16px" height="16px">
             <use xlinkHref={`${sprite}#icon-Rating`} />
           </svg>
 
-          <span className={css.reviews}>{`${averageRating.toFixed(
-            1
-          )} (${reviewCount} Reviews)`}</span>
+          <span className={css.reviews}>{rating}{` (${reviewCount} Reviews)`}</span>
 
           <svg className={css.locationIcon} width="18px" height="20px">
             <use xlinkHref={`${sprite}#icon-map-pin`} />
@@ -73,20 +71,6 @@ const ModalVans = ({ isOpen, onClose, campervan }) => {
         </div>
 
         <p className={css.description}>{description}</p>
-
-        {/* <div className={css.details}>
-          <p>Price: ${price}.00</p>
-          <p>
-            Rating: {averageRating.toFixed(1)} ({reviews.length} Reviews)
-          </p>
-          <p>Location: {location}</p>
-        </div>
-        <div className={css.features}>
-          {details.beds > 0 && <p>Beds: {details.beds}</p>}
-          {details.kitchen > 0 && <p>Kitchen: Available</p>}
-          {details.airConditioner > 0 && <p>Air Conditioner: Available</p>}
-          Add more features as needed
-        </div> */}
       </div>
     </Modal>
   );

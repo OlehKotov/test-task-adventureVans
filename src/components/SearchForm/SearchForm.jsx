@@ -1,15 +1,21 @@
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { setFilters } from "../../redux/filters/slice";
 import sprite from "../../assets/icons/sprite.svg";
 import css from "./SearchForm.module.css";
+import { useDispatch } from "react-redux";
+import { changeFilter } from "../../redux/filtersSlice";
 
 const SearchForm = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+
   const onSubmit = (data) => {
-    dispatch(setFilters(data));
-    console.log(data);
+    const { location, equipment, type, transmission } = data;
+    dispatch(changeFilter({ filterType: "location", value: location }));
+    dispatch(changeFilter({ filterType: "type", value: type }));
+    Object.keys(equipment).forEach((key) => {
+      dispatch(changeFilter({ filterType: key, value: equipment[key] }));
+    });
+    dispatch(changeFilter({ filterType: "transmission", value: transmission }));
   };
 
   return (
@@ -39,11 +45,10 @@ const SearchForm = () => {
           <div className={css.filterLine}></div>
 
           <div className={css.checkboxContainer}>
-
             <label className={css.checkboxLabel}>
               <input
                 type="checkbox"
-                {...register("equipment.AC")}
+                {...register("equipment.airConditioner")}
                 className={css.checkboxInput}
               />
               <div className={css.checkboxContent}>
@@ -57,7 +62,8 @@ const SearchForm = () => {
             <label className={css.checkboxLabel}>
               <input
                 type="checkbox"
-                {...register("equipment.Automatic")}
+                value="automatic"
+                {...register("transmission")}
                 className={css.checkboxInput}
               />
               <div className={css.checkboxContent}>
@@ -71,7 +77,7 @@ const SearchForm = () => {
             <label className={css.checkboxLabel}>
               <input
                 type="checkbox"
-                {...register("equipment.Kitchen")}
+                {...register("equipment.kitchen")}
                 className={css.checkboxInput}
               />
               <div className={css.checkboxContent}>
@@ -99,7 +105,7 @@ const SearchForm = () => {
             <label className={css.checkboxLabel}>
               <input
                 type="checkbox"
-                {...register("equipment.ShowerWC")}
+                {...register("equipment.shower")}
                 className={css.checkboxInput}
               />
               <div className={css.checkboxContent}>
@@ -109,7 +115,6 @@ const SearchForm = () => {
                 <div className={css.checkboxText}>Shower/WC</div>
               </div>
             </label>
-            
           </div>
         </div>
 
@@ -117,13 +122,12 @@ const SearchForm = () => {
           <p className={css.filterHeader}>Vehicle type</p>
           <div className={css.filterLine}></div>
 
-
           <div className={css.radioContainer}>
-
-          <label className={css.radioLabel}>
+            <label className={css.radioLabel}>
               <input
                 type="radio"
-                value="Van" {...register("type")}
+                value="panelTruck"
+                {...register("type")}
                 className={css.radioInput}
               />
               <div className={css.radioContent}>
@@ -137,7 +141,8 @@ const SearchForm = () => {
             <label className={css.radioLabel}>
               <input
                 type="radio"
-                value="FullyIntegrated" {...register("type")}
+                value="fullyIntegrated"
+                {...register("type")}
                 className={css.radioInput}
               />
               <div className={css.radioContent}>
@@ -151,7 +156,8 @@ const SearchForm = () => {
             <label className={css.radioLabel}>
               <input
                 type="radio"
-                value="Alcove" {...register("type")}
+                value="alcove"
+                {...register("type")}
                 className={css.radioInput}
               />
               <div className={css.radioContent}>
@@ -161,11 +167,12 @@ const SearchForm = () => {
                 <div className={css.radioText}>Alcove</div>
               </div>
             </label>
-
           </div>
         </div>
 
-        <button type="submit" className={css.button}>Search</button>
+        <button type="submit" className={css.button}>
+          Search
+        </button>
       </form>
     </div>
   );

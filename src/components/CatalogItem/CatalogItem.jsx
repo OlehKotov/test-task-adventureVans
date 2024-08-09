@@ -1,6 +1,6 @@
 import css from "./CatalogItem.module.css";
 import sprite from "../../assets/icons/sprite.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalVans from "../ModalVans/ModalVans";
 
 const MAX_LENGTH = 68;
@@ -17,44 +17,63 @@ const addDoubleZero = (text) => {
   return result;
 };
 
-const CatalogItem = ({ campervan }) => {
-  const [showHeard, setShowHeard] = useState(false);
+const CatalogItem = ({ campervan, onFavoriteToggle }) => {
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const [selectedCampervan, setSelectedCampervan] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const {
+    _id,
     name,
     price,
     rating,
     location,
     adults,
-    children,
     engine,
     transmission,
-    form,
-    length,
-    width,
-    height,
-    tank,
-    consumption,
     description,
     details,
     gallery,
     reviews,
   } = campervan;
 
-  const toggleHeardPressed = () => {
-    setShowHeard(!showHeard);
+
+  //=================================================
+  
+
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setIsFavorite(storedFavorites.includes(_id));
+  }, [_id]);
+  
+  const toggleFavorite = () => {
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    let updatedFavorites;
+  
+    if (isFavorite) {
+      updatedFavorites = storedFavorites.filter((id) => id !== _id);
+    } else {
+      updatedFavorites = [...storedFavorites, _id];
+    }
+  
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    setIsFavorite(!isFavorite);
+
+    if (onFavoriteToggle) {
+      onFavoriteToggle();
+    }
   };
+  
+
+//===================================================
+
+
 
   const reviewCount = reviews.length;
-  const averageRating =
-    reviews.reduce((sum, review) => sum + review.reviewer_rating, 0) /
-    reviewCount;
 
-    const handleShowMore = () => {
-      setModalIsOpen(true);
-    };
+  const handleShowMore = () => {
+    setModalIsOpen(true);
+  };
 
   return (
     <div>
@@ -67,7 +86,7 @@ const CatalogItem = ({ campervan }) => {
 
             <div className={css.priceWrapper}>
               <span className={css.price}>${addDoubleZero(price)}</span>
-              <button className={css.heardBtn} onClick={toggleHeardPressed}>
+              <button className={css.heardBtn} onClick={toggleFavorite}>
                 <svg
                   className={css.favoriteToggleIcon}
                   width="24px"
@@ -75,7 +94,7 @@ const CatalogItem = ({ campervan }) => {
                 >
                   <use
                     xlinkHref={`${sprite}#${
-                      showHeard ? "icon-Property-1pressed" : "icon-Vector"
+                      isFavorite ? "icon-Property-1pressed" : "icon-Vector"
                     }`}
                   />
                 </svg>
@@ -88,9 +107,7 @@ const CatalogItem = ({ campervan }) => {
               <use xlinkHref={`${sprite}#icon-Rating`} />
             </svg>
 
-            <span className={css.reviews}>{`${averageRating.toFixed(
-              1
-            )} (${reviewCount} Reviews)`}</span>
+            <span className={css.reviews}>{rating}{` (${reviewCount} Reviews)`}</span>
 
             <svg className={css.locationIcon} width="18px" height="20px">
               <use xlinkHref={`${sprite}#icon-map-pin`} />
@@ -157,13 +174,12 @@ const CatalogItem = ({ campervan }) => {
             <button className={css.button} onClick={handleShowMore}>
               Show more
             </button>
-           
-              <ModalVans
+
+            <ModalVans
               isOpen={modalIsOpen}
               onClose={() => setModalIsOpen(false)}
-                campervan={campervan}
-              />
-            
+              campervan={campervan}
+            />
           </div>
         </div>
       </div>

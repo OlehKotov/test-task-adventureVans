@@ -105,11 +105,11 @@
 }
 
 .checkboxText {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 125%;
-    text-align: center;
-    color: #101828;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  text-align: center;
+  color: #101828;
 }
 .filterLine {
   margin-top: 24px;
@@ -166,33 +166,41 @@
 }
 
 .radioText {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 125%;
-    text-align: center;
-    color: #101828;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  text-align: center;
+  color: #101828;
 }
 .button {
-    display: flex;
-    margin-top: 64px;
-    font-family: "Inter";
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
-    letter-spacing: -0.01em;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 200px;
-    padding: 16px 60px;
-    width: 173px;
-    height: 56px;
-    background: #e44848;
-    cursor: pointer;
-    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    outline: none;
-    border: none;
-  }
-  .button:hover,
-  .button:focus {
-    background: #D84343;
-  }
+  display: flex;
+  margin-top: 64px;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 173px;
+  height: 56px;
+  background: #e44848;
+  cursor: pointer;
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  border: none;
+}
+.button:hover,
+.button:focus {
+  background: #d84343;
+}
+.favorites {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  text-align: center;
+  color: #101828;
+  text-decoration: underline;
+}
