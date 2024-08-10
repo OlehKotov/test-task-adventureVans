@@ -3,6 +3,7 @@ import CatalogItem from "../CatalogItem/CatalogItem";
 import css from "./FavoriteList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../../redux/campersOps";
+import { MagnifyingGlass } from "react-loader-spinner";
 
 const FavoriteList = () => {
   const [favorites, setFavorites] = useState([]);
@@ -33,7 +34,18 @@ const FavoriteList = () => {
     return <div>Error: {error}</div>;
   }
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className={css.loader}>
+      <MagnifyingGlass
+    visible={true}
+    height="100"
+    width="100"
+    ariaLabel="magnifying-glass-loading"
+    wrapperStyle={{}}
+    wrapperClass="magnifying-glass-wrapper"
+    glassColor="#f7f7f7"
+    color="#e44848"
+    />
+    </div>;
   }
 
   return (
