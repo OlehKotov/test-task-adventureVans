@@ -35,7 +35,7 @@ const CatalogList = () => {
     const matchesTransmission = transmission
       ? camperTransmission === transmission
       : true;
-      
+
     const matchesEquipment = Object.keys(equipment).every((key) => {
       return equipment[key] ? camperDetails[key] === 1 : true;
     });
@@ -53,18 +53,20 @@ const CatalogList = () => {
     return <div>Error: {error}</div>;
   }
   if (loading) {
-    return <div className={css.loader}>
-      <MagnifyingGlass
-    visible={true}
-    height="100"
-    width="100"
-    ariaLabel="magnifying-glass-loading"
-    wrapperStyle={{}}
-    wrapperClass="magnifying-glass-wrapper"
-    glassColor="#f7f7f7"
-    color="#e44848"
-    />
-    </div>;
+    return (
+      <div className={css.loader}>
+        <MagnifyingGlass
+          visible={true}
+          height="100"
+          width="100"
+          ariaLabel="magnifying-glass-loading"
+          wrapperStyle={{}}
+          wrapperClass="magnifying-glass-wrapper"
+          glassColor="#f7f7f7"
+          color="#e44848"
+        />
+      </div>
+    );
   }
 
   return (
@@ -77,7 +79,7 @@ const CatalogList = () => {
               <CatalogItem key={campervan._id} campervan={campervan} />
             ))
         ) : (
-          <div className={css.noResults}>No results found</div>
+          <div className={css.noResults}>No campers found</div>
         )}
       </div>
 

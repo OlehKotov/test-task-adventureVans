@@ -22,7 +22,7 @@
   font-size: 16px;
   line-height: 125%;
   color: #101828;
-  padding: 18px 337px 18px 18px;
+  padding: 18px 18px 18px 18px;
   width: 400px;
   height: 56px;
 }
@@ -42,7 +42,7 @@
   color: #101828;
   width: 400px;
   height: 114px;
-  padding: 18px 280px 76px 18px;
+  padding: 18px 18px 18px 18px;
   resize: none;
 }
 .bookingTextarea::placeholder {
@@ -96,16 +96,17 @@
   font-size: 16px;
   line-height: 125%;
   color: #101828;
-  padding: 18px 280px 18px 18px;
+  padding: 18px 18px 18px 18px;
   width: 400px;
   height: 56px;
+  
 }
-.bookingDate::placeholder {
+/* .bookingDate::placeholder {
   font-weight: 400;
   font-size: 16px;
   line-height: 125%;
   color: rgba(16, 24, 40, 0.6);
-}
+} */
 .bookingIcon {
   fill: none;
   stroke: currentColor;
@@ -114,4 +115,7 @@
   top: 50%;
   transform: translateY(-30%);
   cursor: pointer;
+}
+.error {
+  color: #d84343;
 }

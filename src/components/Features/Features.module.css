@@ -1,6 +1,5 @@
 .container {
   padding-top: 44px;
-  padding-bottom: 40px;
   display: flex;
   gap: 24px;
 }

@@ -34,18 +34,20 @@ const FavoriteList = () => {
     return <div>Error: {error}</div>;
   }
   if (loading) {
-    return <div className={css.loader}>
-      <MagnifyingGlass
-    visible={true}
-    height="100"
-    width="100"
-    ariaLabel="magnifying-glass-loading"
-    wrapperStyle={{}}
-    wrapperClass="magnifying-glass-wrapper"
-    glassColor="#f7f7f7"
-    color="#e44848"
-    />
-    </div>;
+    return (
+      <div className={css.loader}>
+        <MagnifyingGlass
+          visible={true}
+          height="100"
+          width="100"
+          ariaLabel="magnifying-glass-loading"
+          wrapperStyle={{}}
+          wrapperClass="magnifying-glass-wrapper"
+          glassColor="#f7f7f7"
+          color="#e44848"
+        />
+      </div>
+    );
   }
 
   return (
@@ -60,7 +62,7 @@ const FavoriteList = () => {
             />
           ))
         ) : (
-          <div className={css.noResults}>No favorite campers</div>
+          <div className={css.noResults}>No favorite campers found</div>
         )}
       </div>
     </div>

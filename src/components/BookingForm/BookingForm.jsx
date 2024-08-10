@@ -3,10 +3,15 @@ import css from "./BookingForm.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 
 const BookingForm = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
+    reset();
   };
 
   return (
@@ -23,6 +28,9 @@ const BookingForm = () => {
             placeholder="Name"
             className={css.bookingInput}
           />
+          {errors.name && (
+            <span className={css.error}>{errors.name.message}</span>
+          )}
         </div>
 
         <div className={css.inputWrapper}>
@@ -38,18 +46,23 @@ const BookingForm = () => {
             placeholder="Email"
             className={css.bookingInput}
           />
+          {errors.email && (
+            <span className={css.error}>{errors.email.message}</span>
+          )}
         </div>
 
         <div className={css.inputWrapper}>
           <input
-            type="text"
-            value=""
+            {...register("bookingDate", {
+              required: "Booking date is required",
+            })}
+            type="date"
             placeholder="Booking date"
             className={css.bookingDate}
           />
-          <svg className={css.bookingIcon} width="20px" height="20px">
-            <use xlinkHref={`${sprite}#calendar`} />
-          </svg>
+          {errors.bookingDate && (
+            <span className={css.error}>{errors.bookingDate.message}</span>
+          )}
         </div>
 
         <div className={css.inputWrapper}>

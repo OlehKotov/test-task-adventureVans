@@ -23,6 +23,7 @@
   flex-direction: column;
   gap: 50px;
   align-items: center;
+  padding-top: 44px;
 }
 .noResults {
   font-weight: 600;

@@ -20,7 +20,7 @@ const SearchForm = () => {
 
   return (
     <div className={css.formWrapper}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         <div className={css.location}>
           <label htmlFor="location" className={css.locationText}>
             Location

@@ -136,18 +136,7 @@
   cursor: pointer;
   position: relative;
 }
-.tabLink:first-child::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -24px;
-  width: 142%;
-  height: 5px;
-  background-color: #e44848;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.tabLink:not(:first-child)::after {
+.tabLink::after {
   content: "";
   position: absolute;
   left: 0;
@@ -158,9 +147,7 @@
   opacity: 0;
   transition: opacity 0.5s ease;
 }
-
-.tabLink:hover::after,
-.tabLink:active::after {
+.tabLink.active::after {
   opacity: 1;
 }
 .line {

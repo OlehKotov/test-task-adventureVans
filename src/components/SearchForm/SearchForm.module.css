@@ -1,5 +1,6 @@
 .formWrapper {
   width: 360px;
+  padding-top: 34px;
 }
 .location {
   display: flex;
