@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import css from "./BookingForm.module.css";
-import sprite from "../../assets/icons/sprite.svg";
 
 const BookingForm = () => {
   const {

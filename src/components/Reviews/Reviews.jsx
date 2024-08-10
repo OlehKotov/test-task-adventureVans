@@ -1,5 +1,4 @@
 import css from "./Reviews.module.css";
-import sprite from "../../assets/icons/sprite.svg";
 import BookingForm from "../BookingForm/BookingForm";
 import StarRating from "../StarRating/StarRating";
 
