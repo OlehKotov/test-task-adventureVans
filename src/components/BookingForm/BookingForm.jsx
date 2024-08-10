@@ -1,5 +1,27 @@
 import { useForm } from "react-hook-form";
 import css from "./BookingForm.module.css";
+import * as Yup from "yup";
+import { yupResolver } from '@hookform/resolvers/yup';
+import sprite from "../../assets/icons/sprite.svg";
+
+
+const validationSchema = Yup
+  .object({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string()
+      .required("Email is required")
+      .email("Invalid email format")
+      .matches(
+        /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/,
+        "Invalid email format"
+      ),
+      
+      bookingDate: Yup.date()
+      .required("Booking date is required")
+      .typeError("Booking date is required") 
+      .nullable(),
+  })
+  .required();
 
 const BookingForm = () => {
   const {
@@ -7,7 +29,9 @@ const BookingForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
 
   const onSubmit = () => {
     reset();
@@ -19,10 +43,10 @@ const BookingForm = () => {
       <p className={css.bookingText}>
         Stay connected! We are always ready to help you.
       </p>
-      <form onSubmit={handleSubmit(onSubmit)} className={css.bookingForm}>
+      <form onSubmit={handleSubmit(onSubmit)} className={css.bookingForm} noValidate>
         <div className={css.inputWrapperFirst}>
           <input
-            {...register("name", { required: "Name is required" })}
+            {...register("name")}
             type="text"
             placeholder="Name"
             className={css.bookingInput}
@@ -34,13 +58,7 @@ const BookingForm = () => {
 
         <div className={css.inputWrapper}>
           <input
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Enter a valid email",
-              },
-            })}
+            {...register("email")}
             type="email"
             placeholder="Email"
             className={css.bookingInput}
@@ -52,9 +70,7 @@ const BookingForm = () => {
 
         <div className={css.inputWrapper}>
           <input
-            {...register("bookingDate", {
-              required: "Booking date is required",
-            })}
+            {...register("bookingDate")}
             type="date"
             placeholder="Booking date"
             className={css.bookingDate}
@@ -63,6 +79,7 @@ const BookingForm = () => {
             <span className={css.error}>{errors.bookingDate.message}</span>
           )}
         </div>
+
 
         <div className={css.inputWrapper}>
           <textarea
@@ -81,3 +98,24 @@ const BookingForm = () => {
 };
 
 export default BookingForm;
+
+
+
+
+<div class="modal-field-check">
+            <input
+              type="checkbox"
+              class="modal-check visually-hidden"
+              name="user-privacy"
+              id="user-privacy"
+              value="true"
+              required
+            />
+            <label class="check-label" for="user-privacy">
+              <span class="check-label-box">
+                <svg class="check-label-icon" width="10" height="8">
+                  <use href="./images/icons.svg#icon-Vector"></use>
+                </svg>
+              </span>
+            </label>
+          </div>
