@@ -1,7 +1,5 @@
-
-
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5;
 }
 
@@ -25,8 +23,8 @@ img {
   display: block;
   max-width: 100%;
 }
-input, textarea {
+input,
+textarea {
   outline: none;
   border: none;
-  }
-
+}

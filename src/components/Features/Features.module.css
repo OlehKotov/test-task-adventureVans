@@ -1,0 +1,68 @@
+.container {
+  padding-top: 44px;
+  padding-bottom: 40px;
+  display: flex;
+  gap: 24px;
+}
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.feature {
+  border-radius: 100px;
+  padding: 12px 18px;
+  background: #f2f4f7;
+  min-width: 87px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.featuresDetails {
+  flex-basis: calc((100% - 24px) / 2);
+}
+.featureForm {
+  flex-basis: calc((100% - 24px) / 2);
+}
+.featureIcon {
+  fill: none;
+  stroke: currentColor;
+}
+.filterLine {
+  margin-top: 24px;
+  font-size: 250%;
+  border-bottom: 1px solid rgba(16, 24, 40, 0.1);
+  padding-bottom: 0px;
+  width: 360px;
+  text-align: center;
+}
+.filterHeader {
+  padding-top: 44px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: #101828;
+}
+.featuresListContainer {
+  padding-top: 24px;
+}
+.featuresList {
+  list-style: none;
+}
+.featuresItem {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 133%;
+  text-align: center;
+  color: #101828;
+}
+.featuresItem:not(:first-child) {
+  padding-top: 14px;
+}
+.featureIconText {
+  margin-left: 3px;
+}

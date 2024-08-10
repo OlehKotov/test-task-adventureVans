@@ -1,0 +1,117 @@
+.bookingContainer {
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  border-radius: 10px;
+  padding: 24px;
+  width: 448px;
+}
+.bookingForm {
+  padding-top: 24px;
+}
+.inputWrapperFirst {
+  position: relative;
+}
+.inputWrapper {
+  position: relative;
+  padding-top: 14px;
+}
+.bookingInput {
+  border-radius: 10px;
+  background: #f7f7f7;
+  outline: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #101828;
+  padding: 18px 337px 18px 18px;
+  width: 400px;
+  height: 56px;
+}
+.bookingInput::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: rgba(16, 24, 40, 0.6);
+}
+.bookingTextarea {
+  border-radius: 10px;
+  background: #f7f7f7;
+  outline: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #101828;
+  width: 400px;
+  height: 114px;
+  padding: 18px 280px 76px 18px;
+  resize: none;
+}
+.bookingTextarea::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: rgba(16, 24, 40, 0.6);
+}
+.button {
+  display: flex;
+  margin-top: 24px;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 160px;
+  height: 56px;
+  background: #e44848;
+  cursor: pointer;
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  border: none;
+}
+.button:hover,
+.button:focus {
+  background: #d84343;
+}
+.bookingText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #475467;
+  padding-top: 8px;
+}
+.bookingHeader {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: #101828;
+}
+.bookingDate {
+  border-radius: 10px;
+  background: #f7f7f7;
+  outline: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #101828;
+  padding: 18px 280px 18px 18px;
+  width: 400px;
+  height: 56px;
+}
+.bookingDate::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: rgba(16, 24, 40, 0.6);
+}
+.bookingIcon {
+  fill: none;
+  stroke: currentColor;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-30%);
+  cursor: pointer;
+}

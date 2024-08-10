@@ -24,22 +24,22 @@
   pointer-events: auto;
 }
 .modalContainer::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 .modalContainer::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-  border-radius: 10px; 
+  background: #f1f1f1;
+  border-radius: 10px;
 }
 .modalContainer::-webkit-scrollbar-thumb {
-  background: #888; 
-  border-radius: 10px; 
+  background: #888;
+  border-radius: 10px;
 }
 .modalContainer::-webkit-scrollbar-thumb:hover {
-  background: #777; 
+  background: #777;
 }
 
 .modalContainer {
-  max-height: calc(100vh - 80px); 
+  max-height: calc(100vh - 80px);
   overflow-y: auto;
   padding: 40px;
   width: 982px;
@@ -57,14 +57,13 @@
   transition: transform 0.5s;
 }
 .closeIcon:hover {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 .closeBtn {
   cursor: pointer;
   outline: none;
   border: none;
   background-color: transparent;
-
 }
 .headerContainer {
   display: flex;
@@ -112,13 +111,62 @@
   width: 290px;
   height: 310px;
   object-fit: cover;
-  overflow: hidden; 
-  border: 2px solid transparent; 
+  overflow: hidden;
+  border: 2px solid transparent;
 }
 .description {
-font-weight: 400;
-font-size: 16px;
-line-height: 150%;
-color: #475467;
-padding-top: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #475467;
+  padding-top: 24px;
+}
+.tabs {
+  display: flex;
+  gap: 40px;
+  padding-top: 44px;
+}
+.tabLink {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: #101828;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+}
+.tabLink:first-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+  width: 142%;
+  height: 5px;
+  background-color: #e44848;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.tabLink:not(:first-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+  width: 100%;
+  height: 5px;
+  background-color: #e44848;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.tabLink:hover::after,
+.tabLink:active::after {
+  opacity: 1;
+}
+.line {
+  margin-top: 24px;
+  font-size: 250%;
+  border-bottom: 1px solid rgba(16, 24, 40, 0.1);
+  padding-bottom: 0px;
+  width: 902px;
 }

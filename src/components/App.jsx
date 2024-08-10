@@ -7,11 +7,6 @@ import Favorites from "../pages/Favorites/Favorites";
 function App() {
   return (
     <div>
-      {/* <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/catalog">Catalog</NavLink>
-        <NavLink to="/favorites">Favorites</NavLink>
-      </nav> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />

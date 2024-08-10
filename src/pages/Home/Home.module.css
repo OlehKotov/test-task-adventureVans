@@ -1,15 +1,16 @@
 .homeWrapper {
-    height: 100vh;
-    background-image: linear-gradient(to bottom, black 0%, transparent 100%), url("../../assets/images/camper-van-mattress.jpg");
-    background-size: 100% auto;
+  height: 100vh;
+  background-image: linear-gradient(to bottom, black 0%, transparent 100%),
+    url("../../assets/images/camper-van-mattress.jpg");
+  background-size: 100% auto;
 }
 .welcomeText {
-    padding-top: 190px;
-    color: #fff;
-    text-align: center;
-    font-size: 48px;
-    font-weight: 400;
-    padding-left: 70px;
-    padding-right: 70px;
-    line-height: 1.3;
+  padding-top: 190px;
+  color: #fff;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 400;
+  padding-left: 70px;
+  padding-right: 70px;
+  line-height: 1.3;
 }

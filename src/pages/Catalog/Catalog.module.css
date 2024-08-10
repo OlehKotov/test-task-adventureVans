@@ -1,6 +1,6 @@
 .catalog {
-    display: flex;
-    gap: 64px;
-    flex-wrap: nowrap;
-    padding: 64px 100px;
+  display: flex;
+  gap: 64px;
+  flex-wrap: nowrap;
+  padding: 24px 100px 64px 100px;
 }

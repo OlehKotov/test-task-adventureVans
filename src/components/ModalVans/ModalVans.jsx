@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import css from "./ModalVans.module.css";
 import sprite from "../../assets/icons/sprite.svg";
+import Features from "../Features/Features";
+import Reviews from "../Reviews/Reviews";
 
 const addDoubleZero = (text) => {
   const result = text.toString().slice(0) + ".00";
@@ -10,24 +12,48 @@ const addDoubleZero = (text) => {
 };
 
 const ModalVans = ({ isOpen, onClose, campervan }) => {
+  const [activeTab, setActiveTab] = useState("");
+
+  const handleClose = () => {
+    setActiveTab("");
+    onClose();
+  };
+
   if (!campervan) return null;
 
   const {
+    _id,
     name,
-    description,
-    gallery,
     price,
     rating,
     location,
+    adults,
+    children,
+    engine,
+    transmission,
+    form,
+    length,
+    width,
+    height,
+    tank,
+    consumption,
+    description,
     details,
+    gallery,
     reviews,
   } = campervan;
 
-  const reviewCount = reviews.length;
+  const renderContent = () => {
+    if (activeTab === "features") {
+      return <Features campervan={campervan} />;
+    } else if (activeTab === "reviews") {
+      return <Reviews campervan={campervan} />;
+    }
+  };
 
   return (
     <Modal
-      onRequestClose={onClose}
+      onRequestClose={handleClose}
       closeTimeoutMS={300}
       isOpen={isOpen}
       overlayClassName={css.modalOverlay}
@@ -50,7 +76,10 @@ const ModalVans = ({ isOpen, onClose, campervan }) => {
             <use xlinkHref={`${sprite}#icon-Rating`} />
           </svg>
 
-          <span className={css.reviews}>{rating}{` (${reviewCount} Reviews)`}</span>
+          <span className={css.reviews}>
+            {rating}
+            {` (${reviews.length} Reviews)`}
+          </span>
 
           <svg className={css.locationIcon} width="18px" height="20px">
             <use xlinkHref={`${sprite}#icon-map-pin`} />
@@ -71,6 +100,27 @@ const ModalVans = ({ isOpen, onClose, campervan }) => {
         </div>
 
         <p className={css.description}>{description}</p>
+
+        <div className={css.tabs}>
+          <button
+            className={`${css.tabLink} ${
+              activeTab === "features" ? css.active : ""
+            }`}
+            onClick={() => setActiveTab("features")}
+          >
+            Features
+          </button>
+          <button
+            className={`${css.tabLink} ${
+              activeTab === "reviews" ? css.active : ""
+            }`}
+            onClick={() => setActiveTab("reviews")}
+          >
+            Reviews
+          </button>
+        </div>
+        <div className={css.line} />
+        <div className={css.tabContent}>{renderContent()}</div>
       </div>
     </Modal>
   );
