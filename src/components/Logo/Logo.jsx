@@ -5,7 +5,7 @@ const Logo = () => {
     <div>
       <a
         className={css.logo}
-        href="http://localhost:5173/"
+        href="https://test-task-adventure-vans.vercel.app/"
       >
         AdventureVans
       </a>
