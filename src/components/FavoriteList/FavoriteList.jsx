@@ -11,6 +11,7 @@ const FavoriteList = () => {
   const campers = useSelector((state) => state.campers.data);
   const loading = useSelector((state) => state.campers.loading);
   const error = useSelector((state) => state.campers.error);
+  const [visibleCount, setVisibleCount] = useState(4);
 
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -29,6 +30,10 @@ const FavoriteList = () => {
   const favoriteCampers = campers.filter((camper) =>
     favorites.includes(camper._id)
   );
+
+  const loadMore = () => {
+    setVisibleCount((prevCount) => prevCount + 4);
+  };
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -50,11 +55,12 @@ const FavoriteList = () => {
     );
   }
 
+  
   return (
     <div className={css.campervansContainer}>
       <div className="campervanList">
         {favoriteCampers.length > 0 ? (
-          favoriteCampers.map((camper) => (
+          favoriteCampers.slice(0, visibleCount).map((camper) => (
             <CatalogItem
               key={camper._id}
               campervan={camper}
@@ -65,6 +71,11 @@ const FavoriteList = () => {
           <div className={css.noResults}>No favorite campers found</div>
         )}
       </div>
+      {visibleCount < favoriteCampers.length && (
+        <button onClick={loadMore} className={css.loadMoreButton}>
+          Load more
+        </button>
+      )}
     </div>
   );
 };

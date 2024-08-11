@@ -29,17 +29,13 @@ const CatalogList = () => {
     const matchesLocation = location
       ? camperLocation.toLowerCase().includes(location.toLowerCase())
       : true;
-
     const matchesType = type ? camperForm === type : true;
-
     const matchesTransmission = transmission
       ? camperTransmission === transmission
       : true;
-
     const matchesEquipment = Object.keys(equipment).every((key) => {
       return equipment[key] ? camperDetails[key] === 1 : true;
     });
-
     return (
       matchesLocation && matchesEquipment && matchesType && matchesTransmission
     );
