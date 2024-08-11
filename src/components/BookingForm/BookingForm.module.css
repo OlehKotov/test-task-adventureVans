@@ -105,7 +105,7 @@
   stroke: currentColor;
   position: absolute;
   right: 18px;
-  top: 55%;
+  top: 37px;
   transform: translateY(-30%);
 }
 .error {
