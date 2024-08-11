@@ -25,13 +25,12 @@ const Reviews = ({ campervan }) => {
     reviews,
   } = campervan;
 
-  const maxRating = 5;
 
   return (
     <div className={css.container}>
       <div className={css.reviewsContainer}>
-        {reviews.map(({ id, reviewer_name, reviewer_rating, comment }) => (
-          <div key={id} className={css.reviewItem}>
+        {reviews.map(({ reviewer_name, reviewer_rating, comment }) => (
+          <div key={reviewer_name} className={css.reviewItem}>
             <div className={css.reviews}>
               <div className={css.avatar}>
                 {reviewer_name.charAt(0).toUpperCase()}

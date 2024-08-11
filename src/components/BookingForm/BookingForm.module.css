@@ -113,3 +113,13 @@
 .error {
   color: #d84343;
 }
+
+.calendarIcon {
+  fill: none;
+  stroke: currentColor;
+  position: absolute;
+  right: 10px; 
+  top: 60%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
