@@ -55,7 +55,6 @@ const FavoriteList = () => {
     );
   }
 
-  
   return (
     <div className={css.campervansContainer}>
       <div className="campervanList">
