@@ -5,137 +5,135 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import sprite from "../../assets/icons/sprite.svg";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
 
+// const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-
-const validationSchema = Yup.object({
-  name: Yup.string().required("Name is required"),
+export const validationSchema = Yup.object().shape({
+  name: Yup.string()
+    .required("Name is required")
+    .min(2, "Name must be at least 2 characters long")
+    .max(50, "Name cannot be longer than 30 characters"),
   email: Yup.string()
-    .required("Email is required")
-    .email("Invalid email format")
-    .matches(
-      /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/,
-      "Invalid email format"
-    ),
-  bookingDate: Yup.date()
-    .required("Booking date is required")
-    .nullable(),
-}).required();
-
-
-
+    .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Invalid email address")
+    .email("Invalid email address")
+    .required("Email is required"),
+  date: Yup.date()
+    .transform((value, originalValue) =>
+      originalValue ? new Date(originalValue) : null
+    )
+    .nullable()
+    .required("Date is required")
+    .typeError("Invalid date format"),
+  comment: Yup.string(),
+});
 
 const BookingForm = () => {
-  // const [startDate, setStartDate] = useState(null);
-
   const {
     control,
-    register,
     handleSubmit,
-    formState: { errors },
     reset,
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(validationSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      date: null,
+      comment: "",
+    },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
     reset();
   };
 
   return (
     <div className={css.bookingContainer}>
-      <p className={css.bookingHeader}>Book your campervan now</p>
+      <h2 className={css.bookingHeader}>Book your campervan now</h2>
       <p className={css.bookingText}>
         Stay connected! We are always ready to help you.
       </p>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className={css.bookingForm}
-        noValidate
-      >
+
+      <form className={css.bookingForm} onSubmit={handleSubmit(onSubmit)}>
         <div className={css.inputWrapperFirst}>
-          <input
-            {...register("name")}
-            type="text"
-            placeholder="Name"
-            className={css.bookingInput}
+          <Controller
+            name="name"
+            control={control}
+            render={({ field }) => (
+              <input
+                className={css.bookingInput}
+                type="text"
+                placeholder="Name"
+                {...field}
+              />
+            )}
           />
           {errors.name && (
-            <span className={css.error}>{errors.name.message}</span>
+            <div className={css.error}>{errors.name.message}</div>
           )}
         </div>
 
         <div className={css.inputWrapper}>
-          <input
-            {...register("email")}
-            type="email"
-            placeholder="Email"
-            className={css.bookingInput}
+          <Controller
+            name="email"
+            control={control}
+            render={({ field }) => (
+              <input
+                className={css.bookingInput}
+                type="text"
+                placeholder="Email"
+                {...field}
+              />
+            )}
           />
           {errors.email && (
-            <span className={css.error}>{errors.email.message}</span>
+            <div className={css.error}>{errors.email.message}</div>
           )}
         </div>
 
-{/* <div className={css.inputWrapper}>
+        <div
+          className={css.inputWrapper}
+          onClick={() => document.getElementById("date-input").focus()}
+        >
           <Controller
-            name="bookingDate"
+            name="date"
             control={control}
             render={({ field }) => (
               <DatePicker
-                {...field}
-                selected={field.value}
-                onChange={(date) => field.onChange(date)}
-                className={css.dataPicker}
+                id="date-input"
+                className={css.bookingInput}
                 placeholderText="Booking date"
+                selected={field.value}
+                onChange={field.onChange}
                 dateFormat="dd/MM/yyyy"
               />
-              
             )}
           />
-          {errors.bookingDate && (
-            <span className={css.error}>{errors.bookingDate.message}</span>
+          <svg className={css.bookingIcon} width="20px" height="20px">
+            <use xlinkHref={`${sprite}#calendar`} />
+          </svg>
+
+          {errors.date && (
+            <div className={css.error}>{errors.date.message}</div>
           )}
-        </div> */}
-
-
-<div className={css.inputWrapper}>
+        </div>
+        <div className={css.inputWrapper}>
           <Controller
-            name="bookingDate"
+            name="comment"
             control={control}
             render={({ field }) => (
-              <div className={css.dateInputWrapper}>
-                <DatePicker
-                  {...field}
-                  selected={field.value}
-                  onChange={(date) => field.onChange(date)}
-                  className={css.bookingInput}
-                  placeholderText="Booking date"
-                  dateFormat="dd/MM/yyyy"
-                />
-                <svg className={css.calendarIcon} width="20px" height="20px">
-                  <use xlinkHref={`${sprite}#calendar`} />
-                </svg>
-              </div>
+              <textarea
+                className={css.bookingTextarea}
+                placeholder="Comment"
+                {...field}
+              />
             )}
           />
-          {errors.bookingDate && (
-            <span className={css.error}>{errors.bookingDate.message}</span>
+          {errors.comment && (
+            <div className={css.error}>{errors.comment.message}</div>
           )}
         </div>
-
-
-        <div className={css.inputWrapper}>
-          <textarea
-            {...register("comment")}
-            placeholder="Comment"
-            className={css.bookingTextarea}
-          />
-        </div>
-
-        <button type="submit" className={css.button}>
+        <button type="submit" className={css.button} disabled={isSubmitting}>
           Send
         </button>
       </form>
@@ -144,5 +142,3 @@ const BookingForm = () => {
 };
 
 export default BookingForm;
-
-

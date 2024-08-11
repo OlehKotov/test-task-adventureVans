@@ -106,20 +106,9 @@
   stroke: currentColor;
   position: absolute;
   right: 18px;
-  top: 50%;
+  top: 55%;
   transform: translateY(-30%);
-  cursor: pointer;
 }
 .error {
   color: #d84343;
-}
-
-.calendarIcon {
-  fill: none;
-  stroke: currentColor;
-  position: absolute;
-  right: 10px; 
-  top: 60%;
-  transform: translateY(-50%);
-  pointer-events: none;
 }
