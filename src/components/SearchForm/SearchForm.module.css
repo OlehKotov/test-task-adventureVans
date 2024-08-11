@@ -58,14 +58,12 @@
   line-height: 120%;
   color: #101828;
 }
-
 .checkboxContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   padding-top: 24px;
 }
-
 .checkboxLabel {
   display: flex;
   align-items: center;
@@ -79,31 +77,25 @@
   width: 112px;
   height: 95px;
 }
-
 .checkboxLabel:hover {
   border-color: #bbb;
 }
-
 .checkboxInput {
   display: none;
 }
-
 .checkboxLabel:has(.checkboxInput:checked) {
   border: 1px solid #e44848;
 }
-
 .checkboxContent {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .checkboxIcon {
   fill: none;
   stroke: currentColor;
   margin-bottom: 5px;
 }
-
 .checkboxText {
   font-weight: 500;
   font-size: 16px;
@@ -119,14 +111,12 @@
   width: 360px;
   text-align: center;
 }
-
 .radioContainer {
   display: flex;
   width: 360px;
   gap: 10px;
   padding-top: 24px;
 }
-
 .radioLabel {
   display: flex;
   align-items: center;
@@ -140,31 +130,25 @@
   flex-basis: calc((100% - 20px) / 3);
   height: 95px;
 }
-
 .radioLabel:hover {
   border-color: #bbb;
 }
-
 .radioInput {
   display: none;
 }
-
 .radioLabel:has(.radioInput:checked) {
   border: 1px solid #e44848;
 }
-
 .radioContent {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .radioIcon {
   fill: none;
   stroke: currentColor;
   margin-bottom: 5px;
 }
-
 .radioText {
   font-weight: 500;
   font-size: 16px;

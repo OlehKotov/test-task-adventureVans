@@ -6,15 +6,16 @@ import sprite from "../../assets/icons/sprite.svg";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-// const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
 export const validationSchema = Yup.object().shape({
   name: Yup.string()
     .required("Name is required")
     .min(2, "Name must be at least 2 characters long")
     .max(50, "Name cannot be longer than 30 characters"),
   email: Yup.string()
-    .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Invalid email address")
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      "Invalid email address"
+    )
     .email("Invalid email address")
     .required("Email is required"),
   date: Yup.date()

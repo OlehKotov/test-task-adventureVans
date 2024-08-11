@@ -8,7 +8,6 @@
   z-index: 1000;
   pointer-events: auto;
 }
-
 .modal {
   position: relative;
   top: 40px;
@@ -37,7 +36,6 @@
 .modalContainer::-webkit-scrollbar-thumb:hover {
   background: #777;
 }
-
 .modalContainer {
   max-height: calc(100vh - 80px);
   overflow-y: auto;
@@ -69,7 +67,6 @@
   display: flex;
   justify-content: space-between;
 }
-
 .reviews {
   font-weight: 400;
   font-size: 16px;
@@ -88,7 +85,6 @@
   line-height: 150%;
   color: #101828;
 }
-
 .locationIcon {
   fill: none;
   stroke: currentColor;
@@ -156,4 +152,7 @@
   border-bottom: 1px solid rgba(16, 24, 40, 0.1);
   padding-bottom: 0px;
   width: 902px;
+}
+.bodyLock {
+  overflow: hidden;
 }

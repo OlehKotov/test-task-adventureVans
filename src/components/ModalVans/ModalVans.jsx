@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import css from "./ModalVans.module.css";
@@ -13,6 +13,17 @@ const addDoubleZero = (text) => {
 
 const ModalVans = ({ isOpen, onClose, campervan }) => {
   const [activeTab, setActiveTab] = useState("");
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add(css.bodyLock);
+    } else {
+      document.body.classList.remove(css.bodyLock);
+    }
+    return () => {
+      document.body.classList.remove(css.bodyLock);
+    };
+  }, [isOpen]);
 
   const handleClose = () => {
     setActiveTab("");
