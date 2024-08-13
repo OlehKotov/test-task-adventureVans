@@ -13,7 +13,7 @@ const truncateDescription = (text, maxLength) => {
 };
 
 const addDoubleZero = (text) => {
-  const result = text.toString().slice(0) + ".00";
+  const result = text.toFixed() + ".00";
   return result;
 };
 

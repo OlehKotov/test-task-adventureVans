@@ -7,7 +7,7 @@ import Features from "../Features/Features";
 import Reviews from "../Reviews/Reviews";
 
 const addDoubleZero = (text) => {
-  const result = text.toString().slice(0) + ".00";
+  const result = text.toFixed() + ".00";
   return result;
 };
 
