@@ -4,13 +4,14 @@ import css from "./FavoriteList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../../redux/campersOps";
 import { MagnifyingGlass } from "react-loader-spinner";
+import { selectCampers, selectError, selectLoading } from "../../redux/selectors";
 
 const FavoriteList = () => {
   const [favorites, setFavorites] = useState([]);
   const dispatch = useDispatch();
-  const campers = useSelector((state) => state.campers.data);
-  const loading = useSelector((state) => state.campers.loading);
-  const error = useSelector((state) => state.campers.error);
+  const campers = useSelector(selectCampers);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
   const [visibleCount, setVisibleCount] = useState(4);
 
   useEffect(() => {

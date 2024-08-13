@@ -4,14 +4,15 @@ import css from "./CatalogList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../../redux/campersOps";
 import { MagnifyingGlass } from "react-loader-spinner";
+import { selectCampers, selectError, selectFilters, selectLoading } from "../../redux/selectors";
 
 const CatalogList = () => {
   const [visibleCount, setVisibleCount] = useState(4);
   const dispatch = useDispatch();
-  const campers = useSelector((state) => state.campers.data);
-  const loading = useSelector((state) => state.campers.loading);
-  const error = useSelector((state) => state.campers.error);
-  const filters = useSelector((state) => state.filters);
+  const campers = useSelector(selectCampers);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+  const filters = useSelector(selectFilters);
 
   useEffect(() => {
     dispatch(fetchCampers());
