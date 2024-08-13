@@ -132,6 +132,10 @@
   cursor: pointer;
   position: relative;
 }
+.tabLink:hover,
+.tabLink:focus {
+  color: #475467;
+}
 .tabLink::after {
   content: "";
   position: absolute;
