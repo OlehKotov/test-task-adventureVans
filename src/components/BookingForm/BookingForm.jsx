@@ -32,6 +32,7 @@ const BookingForm = () => {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(validationSchema),
@@ -44,7 +45,7 @@ const BookingForm = () => {
   });
 
   const onSubmit = () => {
-    window.location.reload();
+    reset();
   };
 
   return (

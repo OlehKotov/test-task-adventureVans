@@ -39,4 +39,3 @@ export default filtersSlice.reducer;
 
 
 
-// export const filtersReducer = filtersSlice.reducer;
