@@ -67,7 +67,7 @@ const CatalogList = () => {
   }
 
   return (
-    <div className={css.campervansContainer}>
+    <section className={css.campervansContainer}>
       <div className="campervanList">
         {filteredCampers.length > 0 ? (
           filteredCampers
@@ -85,7 +85,7 @@ const CatalogList = () => {
           Load more
         </button>
       )}
-    </div>
+    </section>
   );
 };
 

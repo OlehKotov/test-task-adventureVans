@@ -4,7 +4,11 @@ import css from "./FavoriteList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../../redux/campersOps";
 import { MagnifyingGlass } from "react-loader-spinner";
-import { selectCampers, selectError, selectLoading } from "../../redux/selectors";
+import {
+  selectCampers,
+  selectError,
+  selectLoading,
+} from "../../redux/selectors";
 
 const FavoriteList = () => {
   const [favorites, setFavorites] = useState([]);
@@ -52,7 +56,7 @@ const FavoriteList = () => {
   }
 
   return (
-    <div className={css.campervansContainer}>
+    <section className={css.campervansContainer}>
       <div className="campervanList">
         {favoriteCampers.length > 0 ? (
           favoriteCampers.map((camper) => (
@@ -66,7 +70,7 @@ const FavoriteList = () => {
           <div className={css.noResults}>No favorite campers found</div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

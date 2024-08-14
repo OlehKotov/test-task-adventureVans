@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className={css.header}>
+    <header className={css.header}>
       <NavLink to="/" className={css.all}>
         Home
       </NavLink>
@@ -13,7 +13,7 @@ const Header = () => {
       <NavLink to="/favorites" className={css.favorites}>
         Favorite campers
       </NavLink>
-    </div>
+    </header>
   );
 };
 

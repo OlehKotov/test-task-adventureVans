@@ -9,10 +9,10 @@ const Favorites = () => {
     <div>
       <DocumentTitle>AdventureVans - Favorite campers</DocumentTitle>
       <Header />
-      <div className={css.catalog}>
+      <main className={css.catalog}>
         <SearchForm />
         <FavoriteList />
-      </div>
+      </main>
     </div>
   );
 };

@@ -9,10 +9,10 @@ const Catalog = () => {
     <div>
       <DocumentTitle>AdventureVans - All campers</DocumentTitle>
       <Header />
-      <div className={css.catalog}>
+      <main className={css.catalog}>
         <SearchForm />
         <CatalogList />
-      </div>
+      </main>
     </div>
   );
 };

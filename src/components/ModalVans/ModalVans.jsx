@@ -12,7 +12,7 @@ const addDoubleZero = (text) => {
 };
 
 const ModalVans = ({ isOpen, onClose, campervan }) => {
-  const [activeTab, setActiveTab] = useState("");
+  const [activeTab, setActiveTab] = useState("features");
 
   useEffect(() => {
     if (isOpen) {
