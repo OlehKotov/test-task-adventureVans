@@ -19,7 +19,14 @@
 .favoriteToggleIcon {
   fill: none;
   stroke: currentColor;
+  transition: stroke 0.5s ease;
 }
+.favoriteToggleIcon:hover,
+.favoriteToggleIcon:focus {
+  stroke: #475467;
+}
+
+
 .titleWrapper {
   display: flex;
   justify-content: space-between;
@@ -35,6 +42,7 @@
   background-color: transparent;
   cursor: pointer;
 }
+
 .priceWrapper {
   display: flex;
   gap: 10px;

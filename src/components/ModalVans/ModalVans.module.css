@@ -131,6 +131,7 @@
   background-color: transparent;
   cursor: pointer;
   position: relative;
+  transition: color 0.5s ease;
 }
 .tabLink:hover,
 .tabLink:focus {

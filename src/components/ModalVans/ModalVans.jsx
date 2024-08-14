@@ -97,7 +97,7 @@ const ModalVans = ({ isOpen, onClose, campervan }) => {
           </svg>
           <span className={css.location}>{location}</span>
         </div>
-        <div className={css.price}>${addDoubleZero(price)}</div>
+        <div className={css.price}>€{addDoubleZero(price)}</div>
 
         <div className={css.imageGallery}>
           {gallery.map((imageUrl, index) => (

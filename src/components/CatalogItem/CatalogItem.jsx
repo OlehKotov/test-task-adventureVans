@@ -80,7 +80,7 @@ const CatalogItem = ({ campervan, onFavoriteToggle }) => {
             <h2 className={css.title}>{name}</h2>
 
             <div className={css.priceWrapper}>
-              <span className={css.price}>${addDoubleZero(price)}</span>
+              <span className={css.price}>€{addDoubleZero(price)}</span>
               <button className={css.heardBtn} onClick={toggleFavorite}>
                 <svg
                   className={css.favoriteToggleIcon}
