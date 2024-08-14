@@ -71,7 +71,7 @@ const CatalogItem = ({ campervan, onFavoriteToggle }) => {
   };
 
   return (
-    <div>
+    <li>
       <div className={css.card}>
         <img className={css.image} src={gallery[0]} alt="Mavericks" />
 
@@ -81,7 +81,7 @@ const CatalogItem = ({ campervan, onFavoriteToggle }) => {
 
             <div className={css.priceWrapper}>
               <span className={css.price}>€{addDoubleZero(price)}</span>
-              <button className={css.heardBtn} onClick={toggleFavorite}>
+              <button className={css.heardBtn} onClick={toggleFavorite} type="button">
                 <svg
                   className={css.favoriteToggleIcon}
                   width="24px"
@@ -169,7 +169,7 @@ const CatalogItem = ({ campervan, onFavoriteToggle }) => {
             )}
           </div>
           <div>
-            <button className={css.button} onClick={handleShowMore}>
+            <button className={css.button} onClick={handleShowMore} type="button">
               Show more
             </button>
 
@@ -181,7 +181,7 @@ const CatalogItem = ({ campervan, onFavoriteToggle }) => {
           </div>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 

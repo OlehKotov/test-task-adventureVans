@@ -57,7 +57,7 @@ const FavoriteList = () => {
 
   return (
     <section className={css.campervansContainer}>
-      <div className="campervanList">
+      <ul className="campervanList">
         {favoriteCampers.length > 0 ? (
           favoriteCampers.map((camper) => (
             <CatalogItem
@@ -69,7 +69,7 @@ const FavoriteList = () => {
         ) : (
           <div className={css.noResults}>No favorite campers found</div>
         )}
-      </div>
+      </ul>
     </section>
   );
 };

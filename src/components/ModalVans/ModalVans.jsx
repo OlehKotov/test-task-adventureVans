@@ -75,7 +75,7 @@ const ModalVans = ({ isOpen, onClose, campervan }) => {
       <div className={css.modalContainer}>
         <div className={css.headerContainer}>
           <h1 className={css.title}>{name}</h1>
-          <button className={css.closeBtn} onClick={() => onClose()}>
+          <button className={css.closeBtn} onClick={() => onClose()} type="button">
             <svg className={css.closeIcon} width="32px" height="32px">
               <use xlinkHref={`${sprite}#close`} />
             </svg>
@@ -114,6 +114,7 @@ const ModalVans = ({ isOpen, onClose, campervan }) => {
 
         <div className={css.tabs}>
           <button
+          type="button"
             className={`${css.tabLink} ${
               activeTab === "features" ? css.active : ""
             }`}
@@ -122,6 +123,7 @@ const ModalVans = ({ isOpen, onClose, campervan }) => {
             Features
           </button>
           <button
+          type="button"
             className={`${css.tabLink} ${
               activeTab === "reviews" ? css.active : ""
             }`}

@@ -107,6 +107,7 @@ const BookingForm = () => {
                 selected={field.value}
                 onChange={field.onChange}
                 dateFormat="dd/MM/yyyy"
+                minDate={new Date()}
               />
             )}
           />

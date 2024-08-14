@@ -68,7 +68,7 @@ const CatalogList = () => {
 
   return (
     <section className={css.campervansContainer}>
-      <div className="campervanList">
+      <ul className="campervanList">
         {filteredCampers.length > 0 ? (
           filteredCampers
             .slice(0, visibleCount)
@@ -78,7 +78,7 @@ const CatalogList = () => {
         ) : (
           <div className={css.noResults}>No campers found</div>
         )}
-      </div>
+      </ul>
 
       {visibleCount < filteredCampers.length && (
         <button onClick={loadMore} className={css.loadMoreButton}>
